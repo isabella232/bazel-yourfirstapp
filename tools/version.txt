@@ -1,0 +1,3 @@
+bazel_android_tools_version 0.23.0
+bazel_repo_commit 7157ad590bb6b239a899c25897a1354d02506576
+built_with_bazel_version 4.0.0
