@@ -31,7 +31,6 @@
 package com.fleepgeek.bullseyesample
 
 import android.content.Intent
-import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -56,17 +55,16 @@ class MainActivity : AppCompatActivity() {
   private lateinit var targetTextView: TextView
 
   override fun onCreate(savedInstanceState: Bundle?) {
-//    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
-    gameScoreTextView = findViewById<TextView>(R.id.game_score_text_view)
-    hitMeButton = findViewById<Button>(R.id.hitMeButton);
-    startOverButton = findViewById<ImageButton>(R.id.start_over_button);
-    infoButton = findViewById<ImageButton>(R.id.info_button);
-    gameRoundTextView = findViewById<TextView>(R.id.game_round_text_view)
-    targetTextView = findViewById<TextView>(R.id.targetTextView)
-    seekBar = findViewById<SeekBar>(R.id.seek_bar)
+    gameScoreTextView = findViewById(R.id.game_score_text_view)
+    hitMeButton = findViewById(R.id.hitMeButton)
+    startOverButton = findViewById(R.id.start_over_button)
+    infoButton = findViewById(R.id.info_button)
+    gameRoundTextView = findViewById(R.id.game_round_text_view)
+    targetTextView = findViewById(R.id.targetTextView)
+    seekBar = findViewById(R.id.seek_bar)
 
     startNewGame()
 
