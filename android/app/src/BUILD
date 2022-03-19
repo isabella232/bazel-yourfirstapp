@@ -25,7 +25,6 @@ kt_android_library(
         artifact("androidx.lifecycle:lifecycle-viewmodel"),
         artifact("androidx.lifecycle:lifecycle-common"),
         artifact("androidx.databinding:viewbinding"),
-        artifact("androidx.core:core-splashscreen"),
     ]
 )
 

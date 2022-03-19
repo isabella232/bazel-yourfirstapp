@@ -33,21 +33,19 @@ package com.fleepgeek.bullseyesample
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.fleepgeek.bullseyesample.databinding.ActivityAboutBinding
+import android.widget.Button
 
 class AboutActivity : AppCompatActivity() {
-  private lateinit var binding: ActivityAboutBinding
 
   override fun onCreate(savedInstanceState: Bundle?) {
 //    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
     super.onCreate(savedInstanceState)
-
-    binding = ActivityAboutBinding.inflate(layoutInflater)
-    setContentView(binding.root)
+    setContentView(R.layout.activity_about)
 
     title = getString(R.string.about_page_title)
+    var backButton = findViewById<Button>(R.id.backButton)
 
-    binding.backButton.setOnClickListener {
+    backButton.setOnClickListener {
       finish()
     }
   }

@@ -34,12 +34,12 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.SeekBar
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.fleepgeek.bullseyesample.databinding.ActivityMainBinding
 import kotlin.math.abs
-import kotlin.math.absoluteValue
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
@@ -47,35 +47,44 @@ class MainActivity : AppCompatActivity() {
   private var targetValue = newTargetValue()
   private var totalScore = 0
   private var currentRound = 1
-
-  private lateinit var binding: ActivityMainBinding
+  private lateinit var hitMeButton: Button
+  private lateinit var gameScoreTextView: TextView
+  private lateinit var startOverButton: ImageButton
+  private lateinit var infoButton: ImageButton
+  private lateinit var seekBar: SeekBar
+  private lateinit var gameRoundTextView: TextView
+  private lateinit var targetTextView: TextView
 
   override fun onCreate(savedInstanceState: Bundle?) {
 //    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
-    installSplashScreen()
     super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_main)
 
-    binding = ActivityMainBinding.inflate(layoutInflater)
-    val view = binding.root
-    setContentView(view)
+    gameScoreTextView = findViewById<TextView>(R.id.game_score_text_view)
+    hitMeButton = findViewById<Button>(R.id.hitMeButton);
+    startOverButton = findViewById<ImageButton>(R.id.start_over_button);
+    infoButton = findViewById<ImageButton>(R.id.info_button);
+    gameRoundTextView = findViewById<TextView>(R.id.game_round_text_view)
+    targetTextView = findViewById<TextView>(R.id.targetTextView)
+    seekBar = findViewById<SeekBar>(R.id.seek_bar)
 
     startNewGame()
 
-    binding.hitMeButton.setOnClickListener {
+    hitMeButton.setOnClickListener {
       showResult()
       totalScore += pointsForCurrentRound()
-      binding.gameScoreTextView.text = totalScore.toString()
+      gameScoreTextView.text = totalScore.toString()
     }
 
-    binding.startOverButton.setOnClickListener {
+    startOverButton.setOnClickListener {
       startNewGame()
     }
 
-    binding.infoButton.setOnClickListener {
+    infoButton.setOnClickListener {
       navigateToAboutPage()
     }
 
-    binding.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+    seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
       override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
         selectedValue = progress
       }
@@ -109,10 +118,10 @@ class MainActivity : AppCompatActivity() {
     selectedValue = 50
     targetValue = newTargetValue()
 
-    binding.gameScoreTextView.text = totalScore.toString()
-    binding.gameRoundTextView.text = currentRound.toString()
-    binding.targetTextView.text = targetValue.toString()
-    binding.seekBar.progress = selectedValue
+    gameScoreTextView.text = totalScore.toString()
+    gameRoundTextView.text = currentRound.toString()
+    targetTextView.text = targetValue.toString()
+    seekBar.progress = selectedValue
   }
 
   private fun showResult() {
@@ -126,26 +135,31 @@ class MainActivity : AppCompatActivity() {
     builder.setPositiveButton(R.string.result_dialog_button_text) { dialog, _ ->
       dialog.dismiss()
       targetValue = newTargetValue()
-      binding.targetTextView.text = targetValue.toString()
+      targetTextView.text = targetValue.toString()
 
       currentRound += 1
-      binding.gameRoundTextView.text = currentRound.toString()
+      gameRoundTextView.text = currentRound.toString()
     }
 
     builder.create().show()
   }
 
   private fun alertTitle(): String {
-    var difference = differenceAmount()
+    val difference = differenceAmount()
 
-    val title: String = if (difference == 0) {
-      getString(R.string.alert_title_1)
-    } else if (difference < 5) {
-      getString(R.string.alert_title_2)
-    } else if (difference <= 10) {
-      getString(R.string.alert_title_3)
-    } else {
-      getString(R.string.alert_title_4)
+    val title: String = when {
+        difference == 0 -> {
+          getString(R.string.alert_title_1)
+        }
+        difference < 5 -> {
+          getString(R.string.alert_title_2)
+        }
+        difference <= 10 -> {
+          getString(R.string.alert_title_3)
+        }
+        else -> {
+          getString(R.string.alert_title_4)
+        }
     }
     return title
   }
