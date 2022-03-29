@@ -1,2 +1,10 @@
+/bazel-*
 .gradle
 .idea
+bazel-testlogs
+bazel-out
+bazel-ios
+bazel-bin
+bazel-android
+.gradle
+.gitignore.swp

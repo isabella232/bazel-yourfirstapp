@@ -1,14 +1,16 @@
-workspace(name = "BullseyeSample")
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
-load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
-
-git_repository(
-    name = "grab_bazel_common",
-    remote = "https://github.com/grab/grab-bazel-common",
-    commit = "540432b688186b0b6f52d6c49d116bf2cef82f3d"
+android_sdk_repository(
+    name = "androidsdk",
+    api_level = 32,
+    build_tools_version = "30.0.2"
 )
 
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+http_archive(
+    name = "android_tools",
+    sha256 = "ed5290594244c2eeab41f0104519bcef51e27c699ff4b379fcbd25215270513e",
+    url = "https://mirror.bazel.build/bazel_android_tools/android_tools_pkg-0.23.0.tar.gz",
+)
 
 http_archive(
     name = "rules_android",
@@ -17,88 +19,66 @@ http_archive(
     strip_prefix = "rules_android-0.1.1",
 )
 
-load("@grab_bazel_common//:workspace_defs.bzl", "android_tools")
-
-android_tools(
-    commit = "f74ef90479383a38cef1af33d28a3253031e00c1",
-    remote = "https://github.com/grab/grab-bazel-common.git",
-)
+RULES_JVM_EXTERNAL_TAG = "2.4"
+RULES_JVM_EXTERNAL_SHA = "2393f002b0a274055a4e803801cd078df90d1a8ac9f15748d1f803b97cfcdc9c"
 
 http_archive(
     name = "rules_jvm_external",
-    sha256 = "f36441aa876c4f6427bfb2d1f2d723b48e9d930b62662bf723ddfb8fc80f0140",
-    strip_prefix = "rules_jvm_external-4.1",
-    url = "https://github.com/bazelbuild/rules_jvm_external/archive/4.1.zip",
+    strip_prefix = "rules_jvm_external-%s" % RULES_JVM_EXTERNAL_TAG,
+    sha256 = RULES_JVM_EXTERNAL_SHA,
+    url = "https://github.com/bazelbuild/rules_jvm_external/archive/%s.zip" % RULES_JVM_EXTERNAL_TAG,
 )
 
 load("@rules_jvm_external//:defs.bzl", "maven_install")
-load("@rules_jvm_external//:specs.bzl", "maven")
 
 maven_install(
     artifacts = [
+        "androidx.core:core-ktx:1.3.2",
+        "androidx.core:core:1.3.2",
         "androidx.appcompat:appcompat:1.4.1",
-        "androidx.constraintlayout:constraintlayout:2.1.3",
-        "androidx.core:core-ktx:1.7.0",
-        "androidx.core:core-splashscreen:1.0.0-beta01",
-        "androidx.databinding:viewbinding:7.1.2",
         "com.google.android.material:material:1.5.0",
-        "org.jacoco:org.jacoco.ant:0.8.3",
-        "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.10",
+        "androidx.constraintlayout:constraintlayout:2.1.3",       
+        "androidx.lifecycle:lifecycle-runtime:2.2.0",
         "junit:junit:4.13.2",
         "androidx.test.ext:junit:1.1.3",
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1",
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1",
         "androidx.test.espresso:espresso-core:3.4.0",
-    ],
-    fail_on_missing_checksum = False,
-    jetify_include_list = [
-        "androidx.appcompat:appcompat",
-        "androidx.constraintlayout:constraintlayout",
-        "androidx.core:core-ktx",
-        "androidx.core:core-splashscreen",
-        "androidx.databinding:viewbinding",
-        "com.google.android.material:material",
-        "org.jacoco:org.jacoco.ant",
-        "org.jetbrains.kotlin:kotlin-stdlib-jdk8",
-        "junit:junit",
-        "androidx.test.ext:junit",
-        "androidx.test.espresso:espresso-core",
+        "androidx.lifecycle:lifecycle-runtime:2.2.0",
+        "androidx.lifecycle:lifecycle-viewmodel:2.2.0",
+        "androidx.lifecycle:lifecycle-common:2.2.0",
+        "androidx.lifecycle:lifecycle-common:2.2.0",
+        "androidx.databinding:viewbinding:7.0.0-alpha02",
+        "com.android.databinding:adapters:3.4.2",
+        "com.android.databinding:library:3.4.2",
+        "com.android.databinding:baseLibrary:3.4.2",
+        "com.android.support:support-annotations:28.0.0",
     ],
     repositories = [
         "https://maven.google.com",
+        "https://jcenter.bintray.com",
         "https://repo1.maven.org/maven2",
     ],
-    resolve_timeout = 600,
+    fetch_sources = True,
 )
 
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+rules_kotlin_version = "legacy-1.4.0-rc4"
+rules_kotlin_sha = "9cc0e4031bcb7e8508fd9569a81e7042bbf380604a0157f796d06d511cff2769"
 
 http_archive(
     name = "io_bazel_rules_kotlin",
-    sha256 = "da0e6e1543fcc79e93d4d93c3333378f3bd5d29e82c1bc2518de0dbe048e6598",
-    url = "https://github.com/bazelbuild/rules_kotlin/releases/download/%s/rules_kotlin_release.tgz" % "legacy-1.4.0-rc3",
+    urls = ["https://github.com/bazelbuild/rules_kotlin/releases/download/%s/rules_kotlin_release.tgz" % rules_kotlin_version],
+    sha256 = rules_kotlin_sha,
 )
+load("@io_bazel_rules_kotlin//kotlin:kotlin.bzl", "kotlin_repositories", "kt_register_toolchains")
 
-KOTLIN_VERSION = "1.4.21"
-
-KOTLINC_RELEASE_SHA = "46720991a716e90bfc0cf3f2c81b2bd735c14f4ea6a5064c488e04fd76e6b6c7"
-
-KOTLINC_RELEASE = {
+kotlin_version = "1.4.20"
+kotlin_release_sha = "11db93a4d6789e3406c7f60b9f267eba26d6483dcd771eff9f85bb7e9837011f"
+rules_kotlin_compiler_release = {
     "urls": [
-        "https://github.com/JetBrains/kotlin/releases/download/v{v}/kotlin-compiler-{v}.zip".format(v = KOTLIN_VERSION),
+    "https://github.com/JetBrains/kotlin/releases/download/v{v}/kotlin-compiler-{v}.zip".format(v = kotlin_version),
     ],
-    "sha256": KOTLINC_RELEASE_SHA,
+    "sha256": kotlin_release_sha,
 }
-
-load("@io_bazel_rules_kotlin//kotlin:kotlin.bzl", "kotlin_repositories")
-
-kotlin_repositories(compiler_release = KOTLINC_RELEASE)
-
-load("@io_bazel_rules_kotlin//kotlin:kotlin.bzl", "kt_register_toolchains")
-
+kotlin_repositories(compiler_release = rules_kotlin_compiler_release)
 kt_register_toolchains()
-
-android_sdk_repository(
-    name = "androidsdk",
-    api_level = 32,
-    build_tools_version = "30.0.3",
-)
-
