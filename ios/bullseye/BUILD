@@ -19,12 +19,11 @@ swift_library(
     name = "tests",
     srcs = glob(["BullseyeTests/*.swift"]),
     visibility = ["//visibility:public"],
-    deps = [":sources"]
 )
 
 ios_unit_test(
     name = "ios_tests",
-    deps = [":app", ":tests"],
+    deps = [":tests"],
     minimum_os_version = "14.0",
     test_host = ":app",
     platform_type = "ios",
