@@ -1,11 +1,6 @@
 load("@build_bazel_rules_apple//apple:ios.bzl", "ios_application", "ios_unit_test")
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
 
-#config_setting(
-#    name = "is_release",
-#    values = { "define" : "release=true" }
-#)
-
 swift_library(
     name = "sources",
     module_name = "Bullseye",
