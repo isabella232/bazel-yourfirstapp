@@ -1,24 +1,27 @@
 load("@build_bazel_rules_apple//apple:ios.bzl", "ios_application", "ios_unit_test")
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
 
-config_setting(
-    name = "is_release",
-    values = { "define" : "release=true" }
-)
+#config_setting(
+#    name = "is_release",
+#    values = { "define" : "release=true" }
+#)
 
 swift_library(
     name = "sources",
+    module_name = "Bullseye",
     srcs = glob(["Bullseye/Sources/*.swift"]),
     data = [
        "Bullseye/App/Assets.xcassets",
     ],
-    visibility = ["//visibility:public"]
+    visibility = ["//visibility:public"],
 )
 
 swift_library(
     name = "tests",
     srcs = glob(["BullseyeTests/*.swift"]),
     visibility = ["//visibility:public"],
+    deps = [":sources"],
+    module_name = "BullseyeTests",
 )
 
 ios_unit_test(

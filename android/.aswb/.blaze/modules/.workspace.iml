@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.system.id="Blaze" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="kotlin-language" name="Kotlin">
+      <configuration version="4" />
+    </facet>
+    <facet type="android" name="Android">
+      <configuration>
+        <option name="ALLOW_USER_CONFIGURATION" value="false" />
+        <option name="MANIFEST_FILE_RELATIVE_PATH" value="" />
+        <option name="RES_FOLDER_RELATIVE_PATH" value="" />
+        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="" />
+        <option name="PROJECT_TYPE" value="1" />
+        <option name="ENABLE_SOURCES_AUTOGENERATION" value="false" />
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../..">
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/java" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../bazel-bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../bazel-genfiles" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../bazel-out" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../bazel-testlogs" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../bazel-android" />
+      <excludeFolder url="file://$MODULE_DIR$/../.." />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="java_compiler_4896bf3a" level="project" />
+    <orderEntry type="library" name="jdk_compiler_4896bf3a" level="project" />
+    <orderEntry type="library" name="versionedparcelable-1.1.1_ecfcf877" level="project" />
+    <orderEntry type="library" name="espresso-core-3.4.0_93b97ab0" level="project" />
+    <orderEntry type="library" name="tracing-1.0.0_1cd98185" level="project" />
+    <orderEntry type="library" name="viewpager2-1.0.0_857b22ff" level="project" />
+    <orderEntry type="library" name="fragment-1.3.6_47688588" level="project" />
+    <orderEntry type="library" name="emoji2-1.0.0_ab621b7f" level="project" />
+    <orderEntry type="library" name="lifecycle-viewmodel-savedstate-2.3.1_ea90dabc" level="project" />
+    <orderEntry type="library" name="drawerlayout-1.1.1_a10fee61" level="project" />
+    <orderEntry type="library" name="junit-1.1.3_7bb8a183" level="project" />
+    <orderEntry type="library" name="lifecycle-viewmodel-2.3.1_1ad933f1" level="project" />
+    <orderEntry type="library" name="lifecycle-process-2.4.0_92f0f2bc" level="project" />
+    <orderEntry type="library" name="monitor-1.4.0_2e7dd95d" level="project" />
+    <orderEntry type="library" name="espresso-idling-resource-3.4.0_79a70fb1" level="project" />
+    <orderEntry type="library" name="core-1.7.0_5172b766" level="project" />
+    <orderEntry type="library" name="constraintlayout-2.1.3_9e1af764" level="project" />
+    <orderEntry type="library" name="vectordrawable-1.1.0_dd07ffa0" level="project" />
+    <orderEntry type="library" name="lifecycle-livedata-2.0.0_9796909b" level="project" />
+    <orderEntry type="library" name="core-runtime-2.1.0_421dcdf" level="project" />
+    <orderEntry type="library" name="localbroadcastmanager-1.0.0_d14484ef" level="project" />
+    <orderEntry type="library" name="core-1.4.0_d8469150" level="project" />
+    <orderEntry type="library" name="runner-1.4.0_906daa61" level="project" />
+    <orderEntry type="library" name="print-1.0.0_4e4b265b" level="project" />
+    <orderEntry type="library" name="appcompat-resources-1.4.1_89405a4" level="project" />
+    <orderEntry type="library" name="recyclerview-1.1.0_b4d98d00" level="project" />
+    <orderEntry type="library" name="lifecycle-livedata-core-2.3.1_dccdc243" level="project" />
+    <orderEntry type="library" name="loader-1.0.0_558e319f" level="project" />
+    <orderEntry type="library" name="startup-runtime-1.0.0_4ac6346" level="project" />
+    <orderEntry type="library" name="emoji2-views-helper-1.0.0_d1cf4607" level="project" />
+    <orderEntry type="library" name="storage-1.4.0_1d07d4bb" level="project" />
+    <orderEntry type="library" name="annotation-experimental-1.1.0_9c2a95e3" level="project" />
+    <orderEntry type="library" name="viewpager-1.0.0_c715edbd" level="project" />
+    <orderEntry type="library" name="viewbinding-7.0.0-alpha02_f3a6fbb5" level="project" />
+    <orderEntry type="library" name="cursoradapter-1.0.0_244b5e73" level="project" />
+    <orderEntry type="library" name="coordinatorlayout-1.1.0_5770a1b6" level="project" />
+    <orderEntry type="library" name="interpolator-1.0.0_3e6c7a1f" level="project" />
+    <orderEntry type="library" name="cardview-1.0.0_dc76c3df" level="project" />
+    <orderEntry type="library" name="transition-1.2.0_55c803e1" level="project" />
+    <orderEntry type="library" name="core-ktx-1.3.2_e7aac746" level="project" />
+    <orderEntry type="library" name="vectordrawable-animated-1.1.0_3405109e" level="project" />
+    <orderEntry type="library" name="material-1.5.0_66cdf7e2" level="project" />
+    <orderEntry type="library" name="activity-1.2.4_2b540a5" level="project" />
+    <orderEntry type="library" name="lifecycle-runtime-2.4.0_283b3165" level="project" />
+    <orderEntry type="library" name="dynamicanimation-1.0.0_ec3563df" level="project" />
+    <orderEntry type="library" name="legacy-support-core-utils-1.0.0_a815247b" level="project" />
+    <orderEntry type="library" name="savedstate-1.1.0_f1894900" level="project" />
+    <orderEntry type="library" name="customview-1.1.0_21947580" level="project" />
+    <orderEntry type="library" name="appcompat-1.4.1_6cedbc4c" level="project" />
+    <orderEntry type="library" name="documentfile-1.0.0_a2f4fc1f" level="project" />
+    <orderEntry type="library" name="kotlin-stdlib-jdk8_b9131a" level="project" />
+    <orderEntry type="library" name="kotlin-stdlib_b9131a" level="project" />
+    <orderEntry type="library" name="kotlin-stdlib-jdk7_b9131a" level="project" />
+    <orderEntry type="library" name="lifecycle-common-2.4.0_e2f21ab4" level="project" />
+    <orderEntry type="library" name="junit-4.13.2_1d047fc0" level="project" />
+    <orderEntry type="library" name="android_499e876c" level="project" />
+    <orderEntry type="library" name="kotlin_sources_kt_f759b4ec" level="project" />
+    <orderEntry type="module" module-name="app.src.kotlin_sources_base" exported="" />
+  </component>
+</module>
