@@ -3,20 +3,22 @@ load("@rules_android//android:rules.bzl", "android_binary")
 load("@io_bazel_rules_kotlin//kotlin:kotlin.bzl", "kt_android_library")
 
 package(default_visibility = ["//visibility:private"])
+
 PACKAGE_NAME = "com.fleepgeek.bullseyesample"
+
 MANIFEST = "main/AndroidManifest.xml"
 
 kt_android_library(
     name = "kotlin_sources",
-    custom_package = PACKAGE_NAME,
-    resource_files = glob(["main/res/**"]),
     srcs = glob(["main/java/com/fleepgeek/bullseyesample/*.kt"]),
+    custom_package = PACKAGE_NAME,
     manifest = MANIFEST,
+    resource_files = glob(["main/res/**"]),
     deps = [
-        artifact('androidx.core:core-ktx'),
-        artifact('androidx.appcompat:appcompat'),
-        artifact('com.google.android.material:material'),
-        artifact('androidx.constraintlayout:constraintlayout'),
+        artifact("androidx.core:core-ktx"),
+        artifact("androidx.appcompat:appcompat"),
+        artifact("com.google.android.material:material"),
+        artifact("androidx.constraintlayout:constraintlayout"),
         artifact("androidx.core:core"),
         artifact("junit:junit:4.13.2"),
         artifact("androidx.test.ext:junit:1.1.3"),
@@ -25,16 +27,16 @@ kt_android_library(
         artifact("androidx.lifecycle:lifecycle-viewmodel"),
         artifact("androidx.lifecycle:lifecycle-common"),
         artifact("androidx.databinding:viewbinding"),
-    ]
+    ],
 )
 
-android_library(
-    name = "main",
-    srcs = ["main/java/com/fleepgeek/bullseyesample/MainActivity.kt", "main/java/com/fleepgeek/bullseyesample/AboutActivity.kt"],
-    manifest = "AndroidManifest.xml",
-    resource_files = glob(["res/**"]),
-    deps = [],
-)
+#android_library(
+#    name = "main",
+#    srcs = ["main/java/com/fleepgeek/bullseyesample/MainActivity.kt", "main/java/com/fleepgeek/bullseyesample/AboutActivity.kt"],
+#    manifest = "AndroidManifest.xml",
+#    resource_files = glob(["res/**"]),
+#   deps = [],
+#)
 
 android_binary(
     name = "yourfirstapp",
