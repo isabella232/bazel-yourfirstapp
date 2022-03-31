@@ -8,7 +8,11 @@ derive_targets_from_directories: true
 
 targets:
   # If source code isn't resolving, add additional targets that compile it here
+<<<<<<< HEAD
   firstapp
+=======
+  //app/src:yourfirstapp
+>>>>>>> android-plugin
 
 additional_languages:
   # Uncomment any additional languages you want supported
@@ -16,10 +20,18 @@ additional_languages:
   # dart
   kotlin
   # python
+<<<<<<< HEAD
+=======
+  c
+>>>>>>> android-plugin
 
 
 # Please uncomment an android-SDK platform. Available SDKs are:
 # android_sdk_platform: android-28
 # android_sdk_platform: android-29
+<<<<<<< HEAD
 android_sdk_platform: android-30
+=======
+# android_sdk_platform: android-30
+>>>>>>> android-plugin
 android_sdk_platform: android-32

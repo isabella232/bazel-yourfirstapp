@@ -44,7 +44,8 @@ class AboutActivity : AppCompatActivity() {
 
     title = getString(R.string.about_page_title)
     var backButton = findViewById<Button>(R.id.backButton)
-
+    var name = "Brian"
+    print(name)
     backButton.setOnClickListener {
       finish()
     }
